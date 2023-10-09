@@ -1,4 +1,4 @@
-# Sports Agenad UI
+# Sports Agenda UI
 
 [![wakatime](https://wakatime.com/badge/github/ApiBR/sports-agenda-ui.svg)](https://wakatime.com/badge/github/ApiBR/sports-agenda-ui)
 [![Sonar Cloud](https://github.com/ApiBR/sports-agenda-ui/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/ApiBR/sports-agenda-ui/actions/workflows/sonarcloud.yml)
