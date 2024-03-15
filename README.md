@@ -6,6 +6,9 @@
 [![GitHub license](https://img.shields.io/github/license/ApiBR/sports-agenda-ui)](https://github.com/ApiBR/sports-agenda-ui)
 [![GitHub last commit](https://img.shields.io/github/last-commit/ApiBR/sports-agenda-ui/main)](https://github.com/ApiBR/sports-agenda-ui)
 
+[![UptimeRobot Status](https://badgen.net/uptime-robot/status/m796574574-d89df8d7ecca2ed9efd3f829)](https://stats.uptimerobot.com/O7lYOCOP)
+[![UptimeRobot Status](https://badgen.net/uptime-robot/month/m796574574-d89df8d7ecca2ed9efd3f829)](https://stats.uptimerobot.com/O7lYOCOP)
+[![UptimeRobot Status](https://badgen.net/uptime-robot/response/m796574574-d89df8d7ecca2ed9efd3f829)](https://stats.uptimerobot.com/O7lYOCOP)
 
 📆 ⚽ Sports Agenda UI
 
