@@ -9,6 +9,7 @@
 [![UptimeRobot Status](https://badgen.net/uptime-robot/status/m796574574-d89df8d7ecca2ed9efd3f829)](https://stats.uptimerobot.com/O7lYOCOP)
 [![UptimeRobot Status](https://badgen.net/uptime-robot/month/m796574574-d89df8d7ecca2ed9efd3f829)](https://stats.uptimerobot.com/O7lYOCOP)
 [![UptimeRobot Status](https://badgen.net/uptime-robot/response/m796574574-d89df8d7ecca2ed9efd3f829)](https://stats.uptimerobot.com/O7lYOCOP)
+![HealthChecks.io](https://healthchecks.io/badge/db17c512-7ebf-4372-a1d0-0519035e65f7/gKXpHLwd-2/sports-agenda-service.svg)
 
 📆 ⚽ Sports Agenda UI
 
