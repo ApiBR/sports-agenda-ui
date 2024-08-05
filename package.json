@@ -4,3 +4,5 @@
   "private": true,
   "homepage": "https://apibr.com/ui/sports-agenda"
 }
+  "dependencies": {
+    "axios": "^0.24.0"
