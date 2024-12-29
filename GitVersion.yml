@@ -1,1 +1,2 @@
-mode: Mainline
+workflow: GitHubFlow/v1
+mode: ContinuousDeployment
