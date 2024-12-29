@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react-swc';
 
 const viteConfig = defineViteConfig({
   plugins: [react()],
-  base: '/ui/',
+  base: '/ui/sports-agenda/',
 });
 
 const vitestConfig = defineVitestConfig({
