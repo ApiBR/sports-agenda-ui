@@ -2,10 +2,10 @@ name: Build & Deploy via ftp
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
-concurrency: 
+concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
@@ -17,46 +17,45 @@ jobs:
       fullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}
 
     steps:
-    
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-          fetch-depth: 0 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v3.1.1
-      with:
-        versionSpec: '5.x'
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.1.1
+        with:
+          versionSpec: "6.0.x"
 
-    - name: Determine Version
-      id: gitversion
-      uses: gittools/actions/gitversion/execute@v3.1.1
-      with:
-        useConfigFile: true
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v3.1.1
+        with:
+          useConfigFile: true
 
-    - name: Set up Node.js 20
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20.x
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build
-      run: npm run build
+      - name: Build
+        run: npm run build
 
-    - name: Test
-      run: npm test
+      - name: Test
+        run: npm test
 
-    - name: Upload build
-      uses: sebastianpopp/ftp-action@releases/v2
-      with:
-        host: ${{ secrets.FTP_SERVER }}
-        user: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        localDir: "build/"
-        remoteDir: "/public_html/ui/sports-agenda/"
-        options: "--delete"
+      - name: Upload build
+        uses: sebastianpopp/ftp-action@releases/v2
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: "dist/"
+          remoteDir: "/public_html/ui/sports-agenda/"
+          options: "--delete"
 
   create_release:
     name: Create release
@@ -64,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       fullSemVer: ${{ needs.build.outputs.fullSemVer }}
-      
+
     steps:
       - name: Create Release
         uses: ncipollo/release-action@v1.14.0

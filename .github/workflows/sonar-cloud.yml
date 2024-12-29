@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-concurrency: 
+concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
@@ -15,21 +15,23 @@ jobs:
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-    
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
       - name: Install dependencies
         run: npm install
 
       - name: Test and coverage
-        run: npm run test -- --coverage --watchAll=false
-          
+        run: npm run test:coverage
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         if: >-
           (
+            github.event_name == 'push' &&
+            github.ref == 'refs/heads/main'
+          ) || (
             github.event_name == 'pull_request' &&
             github.event.pull_request.head.repo.full_name == github.repository
           ) || (
