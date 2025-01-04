@@ -37,7 +37,6 @@ export const LeagueCard = styled.div`
 `;
 
 const LeagueCarousel = ({ leagues, onSelectLeague } : {leagues: League[], onSelectLeague: (id: number) => void}) => {
-const LeagueCarousel = ({ leagues, onSelectLeague } : {leagues: League[], onSelectLeague: (id: number) => void}) => {
   if (!leagues.length) {
     return (
       <CarouselContainer>
