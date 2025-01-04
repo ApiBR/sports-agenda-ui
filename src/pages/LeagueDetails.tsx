@@ -219,7 +219,7 @@ const LeagueDetails: React.FC = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, mockedLeagues, mockedMatches]);
 
   if (!league) {
     return (
