@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import TeamGrid from "../components/TeamGrid";
 import MatchList from "../components/MatchList";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 interface Team {
   id: number;
@@ -220,7 +221,18 @@ const LeagueDetails: React.FC = () => {
   }, [id]);
 
   if (!league) {
-    return <div>Loading...</div>;
+    return (
+      <LeagueDetailsContainer>
+        {id && !mockedLeagues[id] ? (
+          <h1>League not found</h1>
+        ) : (
+          <div className="loading-container">
+            <LoadingSpinner />
+            <p>Loading league details...</p>
+          </div>
+        )}
+      </LeagueDetailsContainer>
+    );
   }
 
   return (
