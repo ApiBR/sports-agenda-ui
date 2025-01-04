@@ -6,7 +6,7 @@ interface Match {
   awayTeamLogo?: string;
   date: string;
   score?: string;
-  league?: string;
+  league?: League;
 }
 
 interface MatchListProps {

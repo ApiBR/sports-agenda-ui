@@ -55,7 +55,7 @@ const MatchDetails: React.FC = () => {
         awayTeamLogo: "https://via.placeholder.com/100?text=Team+B",
         date: "2025-01-01T15:00:00Z",
         score: "2-1", // Null for upcoming matches
-        league: "Premier League",
+        league: { id: 1, name: "Premier League", year: 2025 },
       };
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -102,7 +102,7 @@ const MatchDetails: React.FC = () => {
           <strong>Date:</strong> {new Date(match.date).toLocaleString()}
         </p>
         <p>
-          <strong>League:</strong> {match.league}
+          <strong>League:</strong> {match.league?.name}
         </p>
       </div>
     </MatchDetailsContainer>
