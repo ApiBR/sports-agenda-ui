@@ -15,6 +15,7 @@ interface Match {
   homeTeam: string;
   awayTeam: string;
   date: string;
+  score?: string;  // Optional as it's only present in past matches
 }
 
 interface League {
