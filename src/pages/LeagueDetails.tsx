@@ -25,22 +25,73 @@ interface League {
 }
 
 const LeagueDetailsContainer = styled.div`
+  font-family: "Arial", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
 
   h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #004d40; /* Deep Green */
   }
 
   h2 {
-    margin-top: 30px;
-    margin-bottom: 15px;
+    margin-top: 40px;
+    margin-bottom: 20px;
     font-size: 24px;
+    color: #00695c; /* Slightly lighter green */
+    border-bottom: 2px solid #004d40;
+    display: inline-block;
+    padding-bottom: 5px;
   }
 
+  .teams-section,
   .matches-section {
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f1f8e9; /* Light green tint */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .team-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .team-card {
+    width: 100%;
+    max-width: 150px;
+    text-align: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: bold;
+      color: #004d40;
+    }
+  }
+
+  .match-list-container {
     margin-top: 20px;
+
+    h3 {
+      font-size: 20px;
+      color: #004d40;
+      margin-bottom: 10px;
+    }
   }
 `;
 
