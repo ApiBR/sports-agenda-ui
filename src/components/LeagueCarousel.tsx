@@ -36,8 +36,7 @@ export const LeagueCard = styled.div`
   }
 `;
 
-
-const LeagueCarousel = ({ leagues, onSelectLeague }) => {
+const LeagueCarousel = ({ leagues, onSelectLeague } : {leagues: League[], onSelectLeague: (id: number) => void}) => {
   return (
     <CarouselContainer>
       {leagues.map((league) => (

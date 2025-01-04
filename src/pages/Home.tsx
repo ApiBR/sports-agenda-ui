@@ -5,18 +5,7 @@ import MatchList from "../components/MatchList";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-interface League {
-  id: number;
-  name: string;
-  year: number;
-}
 
-interface Match {
-  id: number;
-  homeTeam: string;
-  awayTeam: string;
-  date: string;
-}
 
 const HomeContainer = styled.div`
   font-family: "Arial", sans-serif;

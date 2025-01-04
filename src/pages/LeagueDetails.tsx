@@ -5,27 +5,6 @@ import TeamGrid from "../components/TeamGrid";
 import MatchList from "../components/MatchList";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-interface Team {
-  id: number;
-  name: string;
-  logo: string;
-}
-
-interface Match {
-  id: number;
-  homeTeam: string;
-  awayTeam: string;
-  date: string;
-  score?: string;  // Optional as it's only present in past matches
-}
-
-interface League {
-  id: number;
-  name: string;
-  year: number;
-  teams: Team[];
-}
-
 const LeagueDetailsContainer = styled.div`
   font-family: "Arial", sans-serif;
   max-width: 1200px;
@@ -105,16 +84,16 @@ const LeagueDetails: React.FC = () => {
 
   useEffect(() => {
     // Mocked data for the league and matches
-    const mockedLeagues = {
+    const mockedLeagues: { [key: number]: { id: number; name: string; year: number; teams: Team[]; } } = {
       1: {
         id: 1,
         name: "Premier League",
         year: 2023,
         teams: [
-          { id: 101, name: "Manchester United", logo: "/images/manu.png" },
-          { id: 102, name: "Chelsea", logo: "/images/chelsea.png" },
-          { id: 103, name: "Liverpool", logo: "/images/liverpool.png" },
-          { id: 104, name: "Arsenal", logo: "/images/arsenal.png" },
+          { id: 101, name: "Manchester United", logo: "/images/manu.png", players: [], matches: [], leagues: [] },
+          { id: 102, name: "Chelsea", logo: "/images/chelsea.png", players: [], matches: [], leagues: [] },
+          { id: 103, name: "Liverpool", logo: "/images/liverpool.png", players: [], matches: [], leagues: [] },
+          { id: 104, name: "Arsenal", logo: "/images/arsenal.png", players: [], matches: [], leagues: [] },
         ],
       },
       2: {
@@ -122,15 +101,15 @@ const LeagueDetails: React.FC = () => {
         name: "La Liga",
         year: 2023,
         teams: [
-          { id: 201, name: "Real Madrid", logo: "/images/realmadrid.png" },
-          { id: 202, name: "Barcelona", logo: "/images/barcelona.png" },
-          { id: 203, name: "Atletico Madrid", logo: "/images/atletico.png" },
-          { id: 204, name: "Sevilla", logo: "/images/sevilla.png" },
+          { id: 201, name: "Real Madrid", logo: "/images/realmadrid.png", players: [], matches: [], leagues: [] },
+          { id: 202, name: "Barcelona", logo: "/images/barcelona.png", players: [], matches: [], leagues: [] },
+          { id: 203, name: "Atletico Madrid", logo: "/images/atletico.png", players: [], matches: [], leagues: [] },
+          { id: 204, name: "Sevilla", logo: "/images/sevilla.png", players: [], matches: [], leagues: [] },
         ],
       },
     };
 
-    const mockedMatches = {
+    const mockedMatches: { [key: number]: { past: { id: number; homeTeam: string; awayTeam: string; date: string; score: string; }[]; upcoming: { id: number; homeTeam: string; awayTeam: string; date: string; }[]; } } = {
       1: {
         past: [
           {
@@ -209,8 +188,8 @@ const LeagueDetails: React.FC = () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Mock league and matches data based on the league ID
-      const leagueData = mockedLeagues[id || "1"];
-      const matchesData = mockedMatches[id || "1"];
+      const leagueData = id ? mockedLeagues[Number(id)] : null;
+      const matchesData = id ? mockedMatches[Number(id)] : { past: [], upcoming: [] };
 
       setLeague(leagueData || null);
       setPastMatches(matchesData?.past || []);
@@ -223,14 +202,10 @@ const LeagueDetails: React.FC = () => {
   if (!league) {
     return (
       <LeagueDetailsContainer>
-        {id && !mockedLeagues[id] ? (
-          <h1>League not found</h1>
-        ) : (
-          <div className="loading-container">
-            <LoadingSpinner />
-            <p>Loading league details...</p>
-          </div>
-        )}
+        <div className="loading-container">
+          <LoadingSpinner />
+          <p>Loading league details...</p>
+        </div>
       </LeagueDetailsContainer>
     );
   }

@@ -2,15 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-interface Team {
-  id: number;
-  name: string;
-  logo: string;
-}
 
-interface TeamGridProps {
-  teams: Team[];
-}
 
 const TeamGridContainer = styled.div`
   display: grid;
@@ -50,7 +42,7 @@ const TeamGridContainer = styled.div`
 `;
 
 const TeamGrid: React.FC<TeamGridProps> = ({ teams }) => {
-  if (!teams.length) {
+  if (!teams?.length) {
     return (
       <TeamGridContainer>
         <div className="empty-state">No teams available</div>

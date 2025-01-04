@@ -2,17 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-interface Match {
-  id: number;
-  homeTeam: string;
-  awayTeam: string;
-  date: string;
-  score: string | null;
-}
-
-interface MatchListProps {
-  matches: Match[];
-}
 
 const MatchListContainer = styled.div`
   display: flex;

@@ -4,36 +4,6 @@ import { useParams } from "react-router-dom";
 import MatchList from "../components/MatchList";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-interface Player {
-  id: number;
-  name: string;
-  position: string;
-  age: number;
-}
-
-interface Match {
-  id: number;
-  homeTeam: string;
-  awayTeam: string;
-  date: string;
-  score?: string;
-}
-
-interface League {
-  id: number;
-  name: string;
-  year: number;
-}
-
-interface Team {
-  id: number;
-  name: string;
-  logo: string;
-  players: Player[];
-  matches: Match[];
-  leagues: League[];
-}
-
 const TeamDetailsContainer = styled.div`
   font-family: "Arial", sans-serif;
   max-width: 1000px;

@@ -3,17 +3,6 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-interface Match {
-  id: number;
-  homeTeam: string;
-  awayTeam: string;
-  homeTeamLogo: string;
-  awayTeamLogo: string;
-  date: string;
-  score: string | null; // "2-1" or null if the match hasn't been played yet
-  league: string;
-}
-
 const MatchDetailsContainer = styled.div`
   padding: 20px;
   font-family: Arial, sans-serif;
