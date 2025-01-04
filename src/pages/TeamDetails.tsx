@@ -18,12 +18,19 @@ interface Match {
   score?: string;
 }
 
+interface League {
+  id: number;
+  name: string;
+  year: number;
+}
+
 interface Team {
   id: number;
   name: string;
   logo: string;
   players: Player[];
   matches: Match[];
+  leagues: League[];
 }
 
 const TeamDetailsContainer = styled.div`
@@ -97,6 +104,32 @@ const TeamDetailsContainer = styled.div`
       }
     }
   }
+
+  .leagues-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #004d40;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
 `;
 
 const TeamDetails: React.FC = () => {
@@ -110,7 +143,7 @@ const TeamDetails: React.FC = () => {
     //     setTeam(data);
     // };
     // fetchTeamDetails();
-    
+
     // Mock Data
     const mockTeamData: Team = {
       id: parseInt(id || "1", 10),
@@ -136,6 +169,10 @@ const TeamDetails: React.FC = () => {
           date: "2024-12-20T15:00:00Z",
           score: "1-1",
         },
+      ],
+      leagues: [
+        { id: 1, name: "Premier League", year: 2023 },
+        { id: 2, name: "La Liga", year: 2023 },
       ],
     };
 
@@ -168,6 +205,25 @@ const TeamDetails: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* Leagues Section */}
+      <h2>Leagues</h2>
+      <table className="leagues-table">
+        <thead>
+          <tr>
+            <th>League</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {team.leagues.map((league) => (
+            <tr key={league.id}>
+              <td>{league.name}</td>
+              <td>{league.year}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
       {/* Matches Section */}
       <div className="section">

@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import LeagueDetails from "./pages/LeagueDetails";
 import TeamDetails from "./pages/TeamDetails";
+import MatchDetails from "./pages/MatchDetails";
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/league/:id" element={<LeagueDetails />} />
             <Route path="/team/:id" element={<TeamDetails />} />
+            <Route path="/match/:id" element={MatchDetails} />
           </Routes>
         </main>
 

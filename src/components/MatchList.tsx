@@ -1,42 +1,66 @@
+import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const MatchContainer = styled.div`
+interface Match {
+  id: number;
+  homeTeam: string;
+  awayTeam: string;
+  date: string;
+  score: string | null;
+}
+
+interface MatchListProps {
+  matches: Match[];
+}
+
+const MatchListContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-`;
+  flex-direction: column;
+  gap: 15px;
 
-export const MatchCard = styled.div`
-  flex: 1 1 calc(33% - 20px);
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  background-color: #fff;
-  text-align: center;
-
-  h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 
-  p {
+  .match {
+    padding: 10px;
+    background-color: #004d40;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+      background-color: #00796b;
+    }
+  }
+
+  .match-date {
     font-size: 14px;
-    color: #666;
+    color: #ccc;
   }
 `;
 
-
-const MatchList = ({ matches }) => {
+const MatchList: React.FC<MatchListProps> = ({ matches }) => {
   return (
-    <MatchContainer>
+    <MatchListContainer>
       {matches.map((match) => (
-        <MatchCard key={match.id}>
-          <div>{match.homeTeam} vs {match.awayTeam}</div>
-          <div>{match.date}</div>
-          {match.score && <div>Score: {match.score}</div>} {/* Display score if available */}
-        </MatchCard>
+        <Link key={match.id} to={`/match/${match.id}`}>
+          <div className="match">
+            <span>
+              {match.homeTeam} vs {match.awayTeam}
+            </span>
+            <span className="match-date">
+              {new Date(match.date).toLocaleDateString()}
+            </span>
+          </div>
+        </Link>
       ))}
-    </MatchContainer>
+    </MatchListContainer>
   );
 };
 
