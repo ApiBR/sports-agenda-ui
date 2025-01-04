@@ -1,33 +1,34 @@
-import { useState } from 'react'
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import LeagueDetails from "./pages/LeagueDetails";
+import TeamDetails from "./pages/TeamDetails";
+import MatchDetails from "./pages/MatchDetails";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-          <img src="vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          <img src="react.svg" className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router basename="/ui/sports-agenda/">
+      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        {/* Header */}
+        <Header />
 
-export default App
+        {/* Main Content */}
+        <main style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/league/:id" element={<LeagueDetails />} />
+            <Route path="/team/:id" element={<TeamDetails />} />
+            <Route path="/match/:id" element={<MatchDetails />} />
+          </Routes>
+        </main>
+
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
+  );
+};
+
+export default App;
