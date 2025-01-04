@@ -69,7 +69,12 @@ const MatchDetails: React.FC = () => {
   if (!match) {
     return (
       <MatchDetailsContainer>
-        <div className="loading-container">
+        <div 
+          className="loading-container"
+          role="status"
+          aria-live="polite"
+          aria-busy="true"
+        >
           <LoadingSpinner />
           <p>Loading match details...</p>
         </div>
