@@ -103,99 +103,100 @@ const LeagueDetails: React.FC = () => {
   const [pastMatches, setPastMatches] = useState<Match[]>([]);
   const [upcomingMatches, setUpcomingMatches] = useState<Match[]>([]);
 
-  useEffect(() => {
-    // Mocked data for the league and matches
-    const mockedLeagues = {
-      1: {
-        id: 1,
-        name: "Premier League",
-        year: 2023,
-        teams: [
-          { id: 101, name: "Manchester United", logo: "/images/manu.png" },
-          { id: 102, name: "Chelsea", logo: "/images/chelsea.png" },
-          { id: 103, name: "Liverpool", logo: "/images/liverpool.png" },
-          { id: 104, name: "Arsenal", logo: "/images/arsenal.png" },
-        ],
-      },
-      2: {
-        id: 2,
-        name: "La Liga",
-        year: 2023,
-        teams: [
-          { id: 201, name: "Real Madrid", logo: "/images/realmadrid.png" },
-          { id: 202, name: "Barcelona", logo: "/images/barcelona.png" },
-          { id: 203, name: "Atletico Madrid", logo: "/images/atletico.png" },
-          { id: 204, name: "Sevilla", logo: "/images/sevilla.png" },
-        ],
-      },
-    };
+  // Mocked data for the league and matches
+  const mockedLeagues = {
+    1: {
+      id: 1,
+      name: "Premier League",
+      year: 2023,
+      teams: [
+        { id: 101, name: "Manchester United", logo: "/images/manu.png" },
+        { id: 102, name: "Chelsea", logo: "/images/chelsea.png" },
+        { id: 103, name: "Liverpool", logo: "/images/liverpool.png" },
+        { id: 104, name: "Arsenal", logo: "/images/arsenal.png" },
+      ],
+    },
+    2: {
+      id: 2,
+      name: "La Liga",
+      year: 2023,
+      teams: [
+        { id: 201, name: "Real Madrid", logo: "/images/realmadrid.png" },
+        { id: 202, name: "Barcelona", logo: "/images/barcelona.png" },
+        { id: 203, name: "Atletico Madrid", logo: "/images/atletico.png" },
+        { id: 204, name: "Sevilla", logo: "/images/sevilla.png" },
+      ],
+    },
+  };
 
-    const mockedMatches = {
-      1: {
-        past: [
-          {
-            id: 301,
-            homeTeam: "Manchester United",
-            awayTeam: "Arsenal",
-            date: "2024-12-22T15:00:00Z",
-            score: "3-1",
-          },
-          {
-            id: 302,
-            homeTeam: "Chelsea",
-            awayTeam: "Liverpool",
-            date: "2024-12-23T18:00:00Z",
-            score: "2-2",
-          },
-        ],
-        upcoming: [
-          {
-            id: 303,
-            homeTeam: "Manchester United",
-            awayTeam: "Liverpool",
-            date: "2024-12-30T17:00:00Z",
-          },
-          {
-            id: 304,
-            homeTeam: "Arsenal",
-            awayTeam: "Chelsea",
-            date: "2024-12-31T19:00:00Z",
-          },
-        ],
-      },
-      2: {
-        past: [
-          {
-            id: 305,
-            homeTeam: "Real Madrid",
-            awayTeam: "Sevilla",
-            date: "2024-12-22T15:00:00Z",
-            score: "1-0",
-          },
-          {
-            id: 306,
-            homeTeam: "Barcelona",
-            awayTeam: "Atletico Madrid",
-            date: "2024-12-23T18:00:00Z",
-            score: "0-2",
-          },
-        ],
-        upcoming: [
-          {
-            id: 307,
-            homeTeam: "Real Madrid",
-            awayTeam: "Barcelona",
-            date: "2024-12-30T20:00:00Z",
-          },
-          {
-            id: 308,
-            homeTeam: "Sevilla",
-            awayTeam: "Atletico Madrid",
-            date: "2024-12-31T21:00:00Z",
-          },
-        ],
-      },
-    };
+  const mockedMatches = {
+    1: {
+      past: [
+        {
+          id: 301,
+          homeTeam: "Manchester United",
+          awayTeam: "Arsenal",
+          date: "2024-12-22T15:00:00Z",
+          score: "3-1",
+        },
+        {
+          id: 302,
+          homeTeam: "Chelsea",
+          awayTeam: "Liverpool",
+          date: "2024-12-23T18:00:00Z",
+          score: "2-2",
+        },
+      ],
+      upcoming: [
+        {
+          id: 303,
+          homeTeam: "Manchester United",
+          awayTeam: "Liverpool",
+          date: "2024-12-30T17:00:00Z",
+        },
+        {
+          id: 304,
+          homeTeam: "Arsenal",
+          awayTeam: "Chelsea",
+          date: "2024-12-31T19:00:00Z",
+        },
+      ],
+    },
+    2: {
+      past: [
+        {
+          id: 305,
+          homeTeam: "Real Madrid",
+          awayTeam: "Sevilla",
+          date: "2024-12-22T15:00:00Z",
+          score: "1-0",
+        },
+        {
+          id: 306,
+          homeTeam: "Barcelona",
+          awayTeam: "Atletico Madrid",
+          date: "2024-12-23T18:00:00Z",
+          score: "0-2",
+        },
+      ],
+      upcoming: [
+        {
+          id: 307,
+          homeTeam: "Real Madrid",
+          awayTeam: "Barcelona",
+          date: "2024-12-30T20:00:00Z",
+        },
+        {
+          id: 308,
+          homeTeam: "Sevilla",
+          awayTeam: "Atletico Madrid",
+          date: "2024-12-31T21:00:00Z",
+        },
+      ],
+    },
+  };
+
+  useEffect(() => {
 
     const fetchData = async () => {
       //   const leagueResponse = await fetch(`/api/leagues/${id}`);
@@ -206,7 +207,7 @@ const LeagueDetails: React.FC = () => {
       //   setLeague(leagueData);
       //   setPastMatches(matchesData.past);
       //   setUpcomingMatches(matchesData.upcoming);
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Mock league and matches data based on the league ID
       const leagueData = mockedLeagues[id || "1"];

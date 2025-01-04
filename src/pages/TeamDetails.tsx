@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import MatchList from "../components/MatchList";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 interface Player {
   id: number;
@@ -177,11 +178,18 @@ const TeamDetails: React.FC = () => {
     };
 
     // Simulate API delay
-    setTimeout(() => setTeam(mockTeamData), 500);
+    setTimeout(() => setTeam(mockTeamData), 1000);
   }, [id]);
 
   if (!team) {
-    return <div>Loading...</div>;
+    return (
+      <TeamDetailsContainer>
+        <div className="loading-container">
+          <LoadingSpinner />
+          <p>Loading team details...</p>
+        </div>
+      </TeamDetailsContainer>
+    );
   }
 
   return (

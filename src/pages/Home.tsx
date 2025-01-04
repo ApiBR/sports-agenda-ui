@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LeagueCarousel from "../components/LeagueCarousel";
 import MatchList from "../components/MatchList";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 interface League {
   id: number;
@@ -89,12 +90,12 @@ const Home: React.FC = () => {
     };
 
     const fetchData = async () => {
-    //   const leaguesResponse = await fetch("/api/leagues");
-    //   const matchesResponse = await fetch("/api/matches");
-    //   const leaguesData = await leaguesResponse.json();
-    //   const matchesData = await matchesResponse.json();
+      //   const leaguesResponse = await fetch("/api/leagues");
+      //   const matchesResponse = await fetch("/api/matches");
+      //   const leaguesData = await leaguesResponse.json();
+      //   const matchesData = await matchesResponse.json();
       // Simulate a delay for better development experience
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Set mocked data
       setLeagues(leaguesData);
@@ -110,16 +111,27 @@ const Home: React.FC = () => {
     navigate(`/league/${leagueId}`);
   };
 
+  if (!leagues.length || !todaysMatches.length || !pastMatches.length || !upcomingMatches.length) {
+    return (
+      <HomeContainer>
+        <div className="loading-container">
+          <LoadingSpinner />
+          <p>Loading details...</p>
+        </div>
+      </HomeContainer>
+    );
+  }
+
   return (
     <HomeContainer>
       <h1>Football Matches</h1>
 
       {/* League Carousel */}
-      <h2>Leagues & Championships</h2>
+      <h2>Leagues &amp; Championships</h2>
       <LeagueCarousel leagues={leagues} onSelectLeague={handleLeagueClick} />
 
-      {/* Today's Matches */}
-      <h2>Today's Matches</h2>
+      {/* Today&apos;s Matches */}
+      <h2>Today&apos;s Matches</h2>
       <MatchList matches={todaysMatches} />
 
       {/* Past Matches */}

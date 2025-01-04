@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 interface Match {
   id: number;
@@ -67,6 +68,9 @@ const MatchDetails: React.FC = () => {
         score: "2-1", // Null for upcoming matches
         league: "Premier League",
       };
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       setMatch(matchData);
     };
 
@@ -74,7 +78,14 @@ const MatchDetails: React.FC = () => {
   }, [id]);
 
   if (!match) {
-    return <div>Loading...</div>;
+    return (
+      <MatchDetailsContainer>
+        <div className="loading-container">
+          <LoadingSpinner />
+          <p>Loading match details...</p>
+        </div>
+      </MatchDetailsContainer>
+    );
   }
 
   return (
