@@ -50,6 +50,14 @@ const TeamGridContainer = styled.div`
 `;
 
 const TeamGrid: React.FC<TeamGridProps> = ({ teams }) => {
+  if (!teams.length) {
+    return (
+      <TeamGridContainer>
+        <div className="empty-state">No teams available</div>
+      </TeamGridContainer>
+    );
+  }
+
   return (
     <TeamGridContainer>
       {teams.map((team) => (
