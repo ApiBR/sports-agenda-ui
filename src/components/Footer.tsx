@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
   return (
     <FooterContainer>
       <p>
-        © {new Date().getFullYear()} Sports Agenda - API BR. All Rights Reserved. | Built
+        © {new Date().getFullYear()} Sports Agenda - API BR. All Rights Reserved. Built
         with ❤️ by <a href="https://guilhermebranco.com.br">Guilherme Branco Stracini</a>
       </p>
     </FooterContainer>

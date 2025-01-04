@@ -20,7 +20,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/league/:id" element={<LeagueDetails />} />
             <Route path="/team/:id" element={<TeamDetails />} />
-            <Route path="/match/:id" element={MatchDetails} />
+            <Route path="/match/:id" element={<MatchDetails />} />
           </Routes>
         </main>
 

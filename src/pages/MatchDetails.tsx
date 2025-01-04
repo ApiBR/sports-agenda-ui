@@ -35,6 +35,14 @@ const MatchDetailsContainer = styled.div`
     }
   }
 
+  .score {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #00796b;
+  }
+
   .details {
     margin-top: 20px;
     text-align: center;
@@ -49,7 +57,6 @@ const MatchDetails: React.FC = () => {
   useEffect(() => {
     // Mock API Call
     const fetchMatchData = async () => {
-      // Replace with your API call if available
       const matchData: Match = {
         id: Number(id),
         homeTeam: "Team A",
@@ -57,7 +64,7 @@ const MatchDetails: React.FC = () => {
         homeTeamLogo: "https://via.placeholder.com/100?text=Team+A",
         awayTeamLogo: "https://via.placeholder.com/100?text=Team+B",
         date: "2025-01-01T15:00:00Z",
-        score: "2-1", // null for upcoming matches
+        score: "2-1", // Null for upcoming matches
         league: "Premier League",
       };
       setMatch(matchData);
@@ -84,15 +91,18 @@ const MatchDetails: React.FC = () => {
           <p>{match.awayTeam}</p>
         </div>
       </div>
+
+      {/* Display the score */}
+      <div className="score">
+        {match.score ? `Score: ${match.score}` : "Match not played yet"}
+      </div>
+
       <div className="details">
         <p>
           <strong>Date:</strong> {new Date(match.date).toLocaleString()}
         </p>
         <p>
           <strong>League:</strong> {match.league}
-        </p>
-        <p>
-          <strong>Score:</strong> {match.score || "Match not played yet"}
         </p>
       </div>
     </MatchDetailsContainer>
