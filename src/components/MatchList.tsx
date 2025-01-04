@@ -59,25 +59,35 @@ const TeamNames = styled.div`
 `;
 
 const MatchList: React.FC<MatchListProps> = ({ matches }) => {
+  const formatDate = React.useMemo(() => 
+    (date: string) => new Date(date).toLocaleDateString(),
+    []
+  );
+
   return (
     <MatchListContainer>
       {matches.map((match) => (
-        <Link key={match.id} to={`/match/${match.id}`}>
+        <Link 
+          key={match.id} 
+          to={`/match/${match.id}`}
+          aria-label={`Match between ${match.homeTeam} and ${match.awayTeam}`}
+        >
           <MatchItem key={match.id}>
             <TeamNames>
               <span>{match.homeTeam}</span>
+              <span aria-hidden="true">vs</span>
               <span>{match.awayTeam}</span>
             </TeamNames>
             <div>
               {/* Display the score or a message if the match is upcoming */}
               {match.score ? (
-                <strong>{match.score}</strong>
+                <strong aria-label={`Score: ${match.score}`}>{match.score}</strong>
               ) : (
                 <span>Match not played yet</span>
               )}
             </div>
             <span className="match-date">
-              {new Date(match.date).toLocaleDateString()}
+              {formatDate(match.date)}
             </span>
           </MatchItem>
         </Link>
