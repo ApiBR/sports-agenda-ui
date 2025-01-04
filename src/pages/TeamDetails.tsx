@@ -37,7 +37,7 @@ const TeamDetailsContainer = styled.div`
     margin-bottom: 30px;
     font-size: 32px;
     font-weight: bold;
-    color: #004d40; /* Deep Green */
+    color: #004d40;
   }
 
   .team-header {
@@ -104,13 +104,43 @@ const TeamDetails: React.FC = () => {
   const [team, setTeam] = useState<Team | null>(null);
 
   useEffect(() => {
-    const fetchTeamDetails = async () => {
-      const response = await fetch(`/api/teams/${id}`);
-      const data = await response.json();
-      setTeam(data);
+    // const fetchTeamDetails = async () => {
+    //     const response = await fetch(`/api/teams/${id}`);
+    //     const data = await response.json();
+    //     setTeam(data);
+    // };
+    // fetchTeamDetails();
+    
+    // Mock Data
+    const mockTeamData: Team = {
+      id: parseInt(id || "1", 10),
+      name: "Mock Team",
+      logo: "https://via.placeholder.com/100",
+      players: [
+        { id: 1, name: "John Doe", position: "Forward", age: 25 },
+        { id: 2, name: "Jane Smith", position: "Midfielder", age: 27 },
+        { id: 3, name: "Tom Johnson", position: "Defender", age: 23 },
+      ],
+      matches: [
+        {
+          id: 101,
+          homeTeam: "Mock Team",
+          awayTeam: "Team B",
+          date: "2024-12-25T15:00:00Z",
+          score: "2-1",
+        },
+        {
+          id: 102,
+          homeTeam: "Team C",
+          awayTeam: "Mock Team",
+          date: "2024-12-20T15:00:00Z",
+          score: "1-1",
+        },
+      ],
     };
 
-    fetchTeamDetails();
+    // Simulate API delay
+    setTimeout(() => setTeam(mockTeamData), 500);
   }, [id]);
 
   if (!team) {
