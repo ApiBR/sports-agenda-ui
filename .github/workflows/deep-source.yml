@@ -37,4 +37,4 @@ jobs:
             - name: Build and analyze
               env:
                   DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
-              run: ./bin/deepsource report --analyzer test-coverage --key javascript --value-file coverage.xml
+              run: ./bin/deepsource report --analyzer test-coverage --key javascript --value-file ./coverage/lcov.info
