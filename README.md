@@ -40,3 +40,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/1a30970f350392c6e807/maintainability)](https://codeclimate.com/github/ApiBR/sports-agenda-ui/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1a30970f350392c6e807/test_coverage)](https://codeclimate.com/github/ApiBR/sports-agenda-ui/test_coverage)
+## Code Scanning Tools
+
+For improved code quality and security, please connect a supported code scanning tool such as SonarCloud, SonarQube, CodeQL, or Semgrep. For more information, visit https://docs.pixee.ai/code-scanning-tools/overview.
+
