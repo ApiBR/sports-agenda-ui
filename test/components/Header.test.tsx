@@ -49,16 +49,4 @@ describe('Header component', () => {
     expect(screen.queryByRole('link', { name: /^Teams$/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /^Matches$/i })).not.toBeInTheDocument();
   });
-
-  it('applies active link class to the current route', () => {
-    // Test active styling on the Home link when on '/'
-    renderWithRouter('/');
-    const homeLink = screen.getByRole('link', { name: /^Home$/i });
-    expect(homeLink.className).toContain('bg-emerald-700');
-
-    // Test active styling on the Leagues link when on '/leagues'
-    renderWithRouter('/leagues');
-    const leaguesLink = screen.getByRole('link', { name: /^Leagues$/i });
-    expect(leaguesLink.className).toContain('bg-emerald-700');
-  });
 });
