@@ -1,88 +1,65 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import type { Match } from '../types';
 
+interface MatchListProps {
+  matches: Match[];
+  title: string;
+}
 
-const MatchListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .match-date {
-    font-size: 14px;
-    color: #ccc;
-  }
-`;
-
-const MatchItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 18px;
-  padding: 10px;
-  background-color: #004d40;
-  color: white;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &:hover {
-    background-color: #00796b;
-  }
-`;
-
-const TeamNames = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-`;
-
-const MatchList: React.FC<MatchListProps> = ({ matches }) => {
-  const formatDate = React.useMemo(() => 
-    (date: string) => new Date(date).toLocaleDateString(),
-    []
-  );
-
+export const MatchList: React.FC<MatchListProps> = ({ matches, title }) => {
   return (
-    <MatchListContainer>
-      {matches.map((match) => (
-        <Link 
-          key={match.id} 
-          to={`/match/${match.id}`}
-          aria-label={`Match between ${match.homeTeam} and ${match.awayTeam}`}
-        >
-          <MatchItem key={match.id}>
-            <TeamNames>
-              <span>{match.homeTeam}</span>
-              <span aria-hidden="true">vs</span>
-              <span>{match.awayTeam}</span>
-            </TeamNames>
-            <div>
-              {/* Display the score or a message if the match is upcoming */}
-              {match.score ? (
-                <strong aria-label={`Score: ${match.score}`}>{match.score}</strong>
-              ) : (
-                <span>Match not played yet</span>
-              )}
+    <div className="bg-white rounded-lg shadow-md p-6">
+      <h2 className="text-xl font-semibold mb-4">{title}</h2>
+      <div className="space-y-4">
+        {matches.map((match) => (
+          <Link
+            key={match.id}
+            to={`/match/${match.id}`}
+            className="block rounded-lg p-4 hover:bg-[rgb(241,248,233)] transition-colors"
+            style={{ backgroundColor: 'rgb(241, 248, 233)' }}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3 flex-1">
+                <img
+                  src={match.homeTeam.logo}
+                  alt={match.homeTeam.name}
+                  className="w-8 h-8 object-contain"
+                />
+                <span className="font-medium">{match.homeTeam.name}</span>
+              </div>
+              
+              <div className="flex flex-col items-center px-4">
+                {match.status === 'finished' && match.score ? (
+                  <div className="text-lg font-bold">
+                    {match.score.home} - {match.score.away}
+                  </div>
+                ) : (
+                  <div className="text-sm text-gray-500">
+                    {new Date(match.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </div>
+                )}
+                <div className="text-xs text-gray-500">
+                  {match.status === 'live' ? (
+                    <span className="text-red-500 font-semibold">LIVE</span>
+                  ) : (
+                    new Date(match.date).toLocaleDateString()
+                  )}
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-3 flex-1 justify-end">
+                <span className="font-medium">{match.awayTeam.name}</span>
+                <img
+                  src={match.awayTeam.logo}
+                  alt={match.awayTeam.name}
+                  className="w-8 h-8 object-contain"
+                />
+              </div>
             </div>
-            <span className="match-date">
-              {formatDate(match.date)}
-            </span>
-          </MatchItem>
-        </Link>
-      ))}
-    </MatchListContainer>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };
-
-export default MatchList;
