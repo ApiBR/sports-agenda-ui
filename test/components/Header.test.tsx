@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { Header } from '../Header';
+import { Header } from '../../src/components/Header';
 
 // Helper to render Header with a given initial route.
 const renderWithRouter = (initialRoute: string) => {
