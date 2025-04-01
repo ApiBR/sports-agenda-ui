@@ -1,23 +1,20 @@
-import { defineConfig as defineViteConfig, mergeConfig } from 'vite';
-import { defineConfig as defineVitestConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-const viteConfig = defineViteConfig({
+// https://vitejs.dev/config/
+export default defineConfig({
   plugins: [react()],
-  base: '/ui/sports-agenda/',
-});
-
-const vitestConfig = defineVitestConfig({
+  optimizeDeps: {
+    exclude: ['lucide-react'],
+  },
   test: {
-    globals: true,
     environment: 'jsdom',
+    globals: true,
     setupFiles: './test/setupTests.ts',
     coverage: {
-      reporter: ['text', 'html', 'lcov'],
-      include: ['src/**/*.{ts,tsx}'],
-      exclude: ['node_modules', 'test/**/*', 'src/main.tsx', 'src/*.d.ts', 'src/types/*.d.ts'],
+      provider: 'v8',
+      reporter: ['lcov', 'text'],
+      reportsDirectory: './coverage',
     },
-  }
+  },
 });
-
-export default mergeConfig(viteConfig, vitestConfig);

@@ -1,65 +1,29 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import type { Team } from '../types';
 
+interface TeamGridProps {
+  teams: Team[];
+}
 
-
-const TeamGridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-
-  .team-card {
-    background-color: #f1f8e9;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
-
-    h3 {
-      font-size: 18px;
-      color: #004d40;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-  }
-`;
-
-const TeamGrid: React.FC<TeamGridProps> = ({ teams }) => {
-  if (!teams?.length) {
-    return (
-      <TeamGridContainer>
-        <div className="empty-state">No teams available</div>
-      </TeamGridContainer>
-    );
-  }
-
+export const TeamGrid: React.FC<TeamGridProps> = ({ teams }) => {
   return (
-    <TeamGridContainer>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {teams.map((team) => (
-        <Link to={`/team/${team.id}`} key={team.id} className="team-card">
-          <img src={team.logo} alt={`${team.name} logo`} />
-          <h3>{team.name}</h3>
+        <Link
+          key={team.id}
+          to={`/team/${team.id}`}
+          className="rounded-lg p-4 hover:shadow-lg transition-all flex flex-col items-center"
+          style={{ backgroundColor: 'rgb(241, 248, 233)' }}
+        >
+          <img
+            src={team.logo}
+            alt={team.name}
+            className="w-20 h-20 object-contain mb-3"
+          />
+          <h3 className="text-center font-medium text-gray-800">{team.name}</h3>
         </Link>
       ))}
-    </TeamGridContainer>
+    </div>
   );
 };
-
-export default TeamGrid;
