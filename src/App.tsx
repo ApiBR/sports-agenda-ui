@@ -12,7 +12,7 @@ import { MatchesPage } from './pages/MatchesPage';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/ui/sports-agenda">
       <div className="min-h-screen flex flex-col bg-gray-100">
         <Header />
         <main className="flex-grow container mx-auto px-4 py-8">
