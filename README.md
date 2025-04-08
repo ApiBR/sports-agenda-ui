@@ -71,7 +71,7 @@ A web-based interface and RESTful API for managing sports events, matches, and r
 ```bash
 git clone https://github.com/ApiBR/sports-agenda-ui.git
 cd sports-agenda-ui
-npm install # or use yarn or pnpm
+npm install # or use yarn / pnpm
 npm run dev 
 ```
 
