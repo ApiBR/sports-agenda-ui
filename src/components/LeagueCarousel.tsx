@@ -35,7 +35,7 @@ export const LeagueCarousel: React.FC<LeagueCarouselProps> = ({ leagues }) => {
           <Link
             key={league.id}
             to={`/league/${league.id}`}
-            className="flex-shrink-0 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 w-64"
+            className="shrink-0 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 w-64"
           >
             <div className="flex items-center space-x-3">
               {league.logo ? (

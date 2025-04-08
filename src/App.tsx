@@ -15,7 +15,7 @@ function App() {
     <Router basename="/ui/sports-agenda">
       <div className="min-h-screen flex flex-col bg-gray-100">
         <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <main className="grow container mx-auto px-4 py-8">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/leagues" element={<LeaguesPage />} />
