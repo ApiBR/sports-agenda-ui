@@ -13,9 +13,9 @@ const leagueLogos = [
   'https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=200&h=200&fit=crop',
-  'https://images.unsplash.com/photo-1574629289-760acc89b4e8?w=200&h=200&fit=crop',
+  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1516731415730-0c607149933a?w=200&h=200&fit=crop',
-  'https://images.unsplash.com/photo-1574629289-760acc89b4e8?w=200&h=200&fit=crop',
+  'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=200&h=200&fit=crop',
 ];
 
