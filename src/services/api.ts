@@ -1,4 +1,4 @@
-import { League, Match, Team } from '../types';
+import { League, Team } from '../types';
 import { mockLeagues, mockMatches, mockTeams } from './mockData';
 
 // Simulate network delay
