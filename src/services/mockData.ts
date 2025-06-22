@@ -4,8 +4,8 @@ import { League, Match, Team, Player } from '../types';
 const teamLogos = [
   'https://images.unsplash.com/photo-1589487391730-58f20eb2c308?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=200&h=200&fit=crop',
-  'https://images.unsplash.com/photo-1577223625816-6500cc0d7247?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200&h=200&fit=crop',
+  'https://images.unsplash.com/photo-1577223625816-6500cc0d7247?w=200&h=200&fit=crop',
 ];
 
 // Mock league logos
@@ -13,7 +13,7 @@ const leagueLogos = [
   'https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=200&h=200&fit=crop',
-  'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=200&h=200&fit=crop',
+  'https://images.unsplash.com/photo-1574629289-760acc89b4e8?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1516731415730-0c607149933a?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1574629289-760acc89b4e8?w=200&h=200&fit=crop',
   'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=200&h=200&fit=crop',
@@ -64,7 +64,7 @@ export const mockLeagues: League[] = [
     id: '4', 
     name: 'Serie A', 
     year: 2024,
-    logo: leagueLogos[3],
+    logo: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200&h=200&fit=crop',
     scoringSystem: { win: 2, draw: 1, loss: 0 }
   },
   {
@@ -78,7 +78,7 @@ export const mockLeagues: League[] = [
     id: '6',
     name: 'Eredivisie',
     year: 2024,
-    logo: leagueLogos[5],
+    logo: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=200&h=200&fit=crop',
     scoringSystem: { win: 3, draw: 1, loss: -1 } // Unique: Penalty for losing
   },
   {
@@ -136,14 +136,14 @@ export const mockTeams: Team[] = [
   { 
     id: '3', 
     name: 'Arsenal', 
-    logo: teamLogos[2], 
+    logo: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=200&h=200&fit=crop', 
     players: createPlayers('3'),
     stats: createTeamStats()
   },
   { 
     id: '4', 
     name: 'Chelsea', 
-    logo: teamLogos[3], 
+    logo: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop', 
     players: createPlayers('4'),
     stats: createTeamStats()
   },
