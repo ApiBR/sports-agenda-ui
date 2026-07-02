@@ -1,7 +1,6 @@
 version: 2
 
 updates:
-
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -15,39 +14,9 @@ updates:
       - "npm"
       - "dependencies"
     groups:
-      vite:
-        patterns:
-          - "vite"
-          - "@vitejs/*"
       react:
         patterns:
-          - "react"
-          - "react-dom"
-          - "react-router-dom"
-          - "@floating-ui/react"
-          - "@tanstack/react-query"
-          - "lucide-react"
-      eslint:
-        patterns:
-          - "eslint"
-          - "@eslint/*"
-          - "eslint-plugin-*"
-          - "typescript-eslint"
-          - "globals"
-      typescript:
-        patterns:
-          - "typescript"
-          - "@types/*"
-      i18n:
-        patterns:
-          - "i18next"
-          - "i18next-*"
-          - "react-i18next"
-      tailwind:
-        patterns:
-          - "tailwindcss"
-          - "autoprefixer"
-          - "postcss"
+          - "react*"
 
   - package-ecosystem: "github-actions"
     directory: "/"
