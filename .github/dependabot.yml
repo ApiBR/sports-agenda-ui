@@ -9,8 +9,6 @@ updates:
     open-pull-requests-limit: 50
     assignees:
       - "guibranco"
-    reviewers:
-      - "guibranco"
     labels:
       - "npm"
       - "dependencies"
@@ -19,6 +17,13 @@ updates:
         patterns:
           - "vite"
           - "@vitejs/*"
+      vitest:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+      testing-library:
+        patterns:
+          - "@testing-library/*"
       react:
         patterns:
           - "react"
@@ -55,8 +60,6 @@ updates:
       interval: weekly
     open-pull-requests-limit: 50
     assignees:
-      - "guibranco"
-    reviewers:
       - "guibranco"
     labels:
       - "github-actions"
