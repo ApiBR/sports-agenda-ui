@@ -29,7 +29,7 @@ jobs:
 
       - name: Determine Version
         id: gitversion
-        uses: gittools/actions/gitversion/execute@7417b1089e2c7de93510f1901d656ddf60bb024f # v4.7.0
+        uses: gittools/actions/gitversion/execute@220647997b450f3e9364b6cf6a357197f17d924b # v4.7.2
 
       - name: Set up Node.js 20
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
