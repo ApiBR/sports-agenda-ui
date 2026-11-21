@@ -1,36 +1,45 @@
 import React from 'react';
-import { mockMatches } from '../services/mockData';
 import { MatchList } from '../components/MatchList';
+import { LoadingSpinner } from '../components/LoadingSpinner';
+import { ErrorMessage } from '../components/ErrorMessage';
+import { useApi } from '../hooks/useApi';
+import { api } from '../services/api';
+
+const LIST_SIZE = 30;
 
 export const MatchesPage: React.FC = () => {
-  const todayMatches = mockMatches.filter(match => {
-    const matchDate = new Date(match.date);
-    const today = new Date();
-    return (
-      matchDate.getDate() === today.getDate() &&
-      matchDate.getMonth() === today.getMonth() &&
-      matchDate.getFullYear() === today.getFullYear()
-    );
+  const { data, isLoading, error } = useApi(async () => {
+    const [today, upcoming, past] = await Promise.all([
+      api.matches.getToday(),
+      api.matches.getUpcoming(LIST_SIZE),
+      api.matches.getPast(LIST_SIZE),
+    ]);
+    return { today, upcoming, past };
   });
 
-  const pastMatches = mockMatches.filter(match => match.status === 'finished');
-  const upcomingMatches = mockMatches.filter(match => match.status === 'scheduled');
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (error || !data) {
+    return <ErrorMessage message={error ?? 'An error occurred'} />;
+  }
 
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold text-gray-900">All Matches</h1>
-      
+
       <div className="space-y-8">
         <section>
-          <MatchList matches={todayMatches} title="Today's Matches" />
+          <MatchList matches={data.today} title="Today's Matches" emptyMessage="No matches today." />
         </section>
 
         <section>
-          <MatchList matches={upcomingMatches} title="Upcoming Matches" />
+          <MatchList matches={data.upcoming} title="Upcoming Matches" />
         </section>
 
         <section>
-          <MatchList matches={pastMatches} title="Past Matches" />
+          <MatchList matches={data.past} title="Past Matches" />
         </section>
       </div>
     </div>
