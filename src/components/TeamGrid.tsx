@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TeamLogo } from './TeamLogo';
 import type { Team } from '../types';
 
 interface TeamGridProps {
@@ -16,11 +17,7 @@ export const TeamGrid: React.FC<TeamGridProps> = ({ teams }) => {
           className="rounded-lg p-4 hover:shadow-lg transition-all flex flex-col items-center"
           style={{ backgroundColor: 'rgb(241, 248, 233)' }}
         >
-          <img
-            src={team.logo}
-            alt={team.name}
-            className="w-20 h-20 object-contain mb-3"
-          />
+          <TeamLogo team={team} className="w-20 h-20 mb-3" />
           <h3 className="text-center font-medium text-gray-800">{team.name}</h3>
         </Link>
       ))}

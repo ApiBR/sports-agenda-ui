@@ -75,6 +75,12 @@ npm install # or use yarn / pnpm
 npm run dev 
 ```
 
+The UI reads real data from the [Sports Agenda API](https://apibr.com/sports-agenda/swagger) (`https://apibr.com/sports-agenda/api/v1`), which allows cross-origin requests, so `npm run dev` works against production out of the box. To point it at another API (e.g. a local `php -S` of `sports-agenda-service`), set `VITE_API_BASE_URL`:
+
+```bash
+VITE_API_BASE_URL=http://localhost:8001/api/v1 npm run dev
+```
+
 ---
 
 ## 📄 License
