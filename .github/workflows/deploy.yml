@@ -31,10 +31,10 @@ jobs:
         id: gitversion
         uses: gittools/actions/gitversion/execute@220647997b450f3e9364b6cf6a357197f17d924b # v4.7.2
 
-      - name: Set up Node.js 20
+      - name: Set up Node.js 22
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
-          node-version: 20.x
+          node-version: 22.x
 
       - name: Install dependencies
         run: npm ci
